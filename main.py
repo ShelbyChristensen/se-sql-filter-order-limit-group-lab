@@ -92,12 +92,14 @@ pd.read_sql("""
 SELECT * FROM babe_ruth_stats; """, conn3)
 
 # STEP 9
-# Replace None with your code
-df_ruth_years = None
+df_ruth_years = pd.read_sql("""
+SELECT COUNT(DISTINCT year) FROM babe_ruth_stats;
+""", conn3)
 
 # STEP 10
-# Replace None with your code
-df_hr_total = None
+df_hr_total = pd.read_sql("""
+SELECT SUM(hr) FROM babe_ruth_stats;
+""", conn3)
 
 
 ##### Part 5: Grouping and Aggregation #####
