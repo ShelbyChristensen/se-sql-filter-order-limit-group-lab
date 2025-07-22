@@ -12,11 +12,17 @@ pd.read_sql("""SELECT * FROM planets; """, conn1)
 
 # STEP 1
 # Replace None with your code
-df_no_moons = None
+df_no_moons = pd.read_sql("""
+SELECT * FROM planets
+WHERE moons = 0;
+""", conn1)
 
 # STEP 2
 # Replace None with your code
-df_name_seven = None
+df_name_seven = pd.read_sql("""
+SELECT name, mass FROM planets
+WHERE LENGTH(name) = 7;
+""", conn1)
 
 ##### Part 2: Advanced Filtering #####
 
