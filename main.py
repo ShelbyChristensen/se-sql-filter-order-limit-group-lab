@@ -56,16 +56,27 @@ conn2 = sqlite3.connect('dogs.db')
 pd.read_sql("SELECT * FROM dogs;", conn2)
 
 # STEP 6
-# Replace None with your code
-df_hungry = None
+df_hungry = pd.read_sql("""
+SELECT name, age, breed FROM dogs
+WHERE hungry = 1
+ORDER BY age ASC;
+""", conn2)
 
 # STEP 7
-# Replace None with your code
-df_hungry_ages = None
+df_hungry_ages = pd.read_sql("""
+SELECT name, age, hungry FROM dogs
+WHERE hungry = 1 AND age BETWEEN 2 AND 7
+ORDER BY name ASC;
+""", conn2)
 
 # STEP 8
-# Replace None with your code
-df_4_oldest = None
+df_4_oldest = pd.read_sql("""
+SELECT name, age, breed FROM dogs
+ORDER BY age DESC
+LIMIT 4;
+""", conn2)
+
+df_4_oldest = df_4_oldest.sort_values(by="breed").reset_index(drop=True)
 
 
 ##### Part 4: Aggregation #####
